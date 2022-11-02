@@ -1,13 +1,29 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from './pages';
+import Faq from './pages/faq';
+import SignUp from './pages/signup';
+import SignIn from './pages/signin';
 import { useState } from "react";
 import JSONDATA from "./MOCK_DATA.json";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import 'antd/dist/antd.css';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="App">
+      <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
       <input
         type="text"
         placeholder="Search for help"
